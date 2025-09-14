@@ -1,0 +1,358 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  background-image: url("1.jpg");
+  background-size: cover;       /* масштабируем картинку под весь экран */
+  background-position: center;  /* центрируем изображение */
+  background-repeat: no-repeat; /* чтобы не дублировалось */
+  font-family: Arial, sans-serif;
+}
+
+
+/* Шапка сайта */
+.site-header {
+  width: 100%;
+  max-width: 1400px;
+  height: 450px;
+  margin: 0 auto;
+  background-image: url("3.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+  text-shadow: 2px 2px 5px rgb(3, 0, 0);
+  border-radius: 50px;
+}
+
+/* Заставка */
+.splash {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: black;
+  z-index: 1000;
+  transition: opacity 0.5s ease;
+}
+
+/* Контент заставки */
+.splash-content {
+  text-align: center;
+}
+
+/* Лого */
+.rotate-img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  animation: rotate 8s linear 1 forwards;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Кнопка входа */
+.enter-btn {
+  margin-top: 20px;
+  padding: 12px 24px;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #ff5722;
+  color: white;
+  display: none;
+  animation: pulse 1.5s infinite;
+  transition: opacity 0.5s ease;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.show-btn {
+  display: inline-block;
+  opacity: 1;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+  .rotate-img { width: 120px; height: 120px; }
+  .enter-btn { font-size: 16px; padding: 10px 18px; }
+  .site-header { height: 250px; font-size: 18px; border-radius: 20px; }
+}
+
+@media (max-width: 480px) {
+  .rotate-img { width: 90px; height: 90px; }
+  .enter-btn { font-size: 14px; padding: 8px 16px; }
+  .site-header { height: 200px; font-size: 16px; border-radius: 15px; }
+}
+
+/* ========================= */
+/* Блоки с кнопками и модалки */
+/* ========================= */
+
+/* Общие блоки */
+.block {
+  max-width: 90%;
+  margin: 30px auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.95); /* чуть прозрачный фон */
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  transition: transform 0.2s;
+}
+
+.block:hover {
+  transform: translateY(-3px);
+}
+
+/* Кнопки открытия модального окна */
+button.open-modal-btn {
+  padding: 12px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  background: #007bff;
+  color: #fff;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+button.open-modal-btn:hover {
+  background: #0056b3;
+}
+
+/* Модальные окна */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto; /* скролл внутри модалки, не фон */
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  max-height: 90%;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  overflow: auto;
+}
+
+.modal-content img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+/* Сетка фото внутри модалки */
+.photos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
+}
+
+.photos img {
+  width: 30%;
+  height: 80px;
+  object-fit: cover;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: transform 0.2s;
+}
+
+.photos img:hover {
+  transform: scale(1.05);
+}
+
+/* Крестик для закрытия модалки */
+.close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 25px;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+}
+
+/* Адаптив для телефонов */
+@media (max-width: 768px) {
+  .photos img {
+    width: 40%;
+    height: 70px;
+  }
+
+  button.open-modal-btn {
+    font-size: 14px;
+    padding: 10px 15px;
+  }
+
+  .modal-content {
+    max-width: 90%;
+    padding: 15px;
+  }
+
+  .block {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .photos img {
+    width: 45%;
+    height: 70px;
+  }
+
+  button.open-modal-btn {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  .modal-content {
+    max-width: 95%;
+    padding: 15px;
+  }
+}
+.site-footer {
+  width: 100%;
+  padding: 40px 20px;
+  background-image: url("1.jpg"); /* здесь путь к твоему фону */
+  background-size: cover;       /* масштабировать под весь блок */
+  background-position: center;  /* центрировать изображение */
+  background-repeat: no-repeat; /* не дублировать */
+  color: #fff;                  /* цвет текста */
+  text-align: center;
+  box-shadow: 0 -4px 10px rgba(0,0,0,0.3);
+}
+
+.site-footer .footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.site-footer h3 {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.site-footer p {
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.site-footer .footer-links a {
+  margin: 0 10px;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.site-footer .footer-links a:hover {
+  color: #ff9800;
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+  .site-footer h3 { font-size: 20px; }
+  .site-footer p { font-size: 14px; }
+  .site-footer .footer-links a { display: block; margin: 5px 0; }
+}
+/* Заставка */
+.splash {
+  position: fixed;
+  top: 0; 
+  left: 0;
+  width: 100%; 
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url("1.jpg"); /* путь к твоему фото */
+  background-size: cover;       /* масштабирование под весь экран */
+  background-position: center;  /* центрирование */
+  background-repeat: no-repeat; /* без повторов */
+  z-index: 1000;
+  transition: opacity 0.5s ease;
+}
+
+/* Контент заставки */
+.splash-content {
+  text-align: center;
+}
+
+/* Лого */
+.rotate-img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  animation: rotate 8s linear 1 forwards;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Кнопка входа */
+.enter-btn {
+  margin-top: 20px;
+  padding: 12px 24px;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #ff5722;
+  color: white;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Адаптив для планшетов */
+@media (max-width: 768px) {
+  .rotate-img { width: 120px; height: 120px; }
+  .enter-btn { font-size: 16px; padding: 10px 18px; }
+}
+
+/* Адаптив для телефонов */
+@media (max-width: 480px) {
+  .rotate-img { width: 90px; height: 90px; }
+  .enter-btn { font-size: 14px; padding: 8px 16px; }
+}

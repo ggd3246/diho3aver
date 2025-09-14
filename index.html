@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>John pork</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Заставка -->
+  <div class="splash" id="splash">
+    <div class="splash-content">
+      <img src="3.jpg" alt="Лого" class="rotate-img" id="logo">
+      <button class="enter-btn" id="enterBtn">John pork 67</button>
+    </div>
+  </div>
+
+  <!-- Основная часть сайта -->
+  <div id="mainSite" class="hidden">
+    <header class="site-header">
+      <h1>Добро пожаловать в John pork</h1>
+    </header>
+  </div>
+
+  
+
+  <div class="block">
+    <h2>Блок 2</h2>
+    <button class="open-modal-btn" data-block="2">Открыть модальное окно</button>
+  </div>
+
+  <!-- Модальное окно с 10 фото -->
+  <div id="modal-gallery" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="photos"></div>
+    </div>
+  </div>
+
+  <button class="open-modal-btn"></button>
+<div id="modal-gallery" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div class="photos"></div>
+  </div>
+</div>
+
+<div id="modal-photo" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <img id="photo-img" src="" alt="">
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-content">
+    <h3>John pork</h3>
+    <p>John pork</p>
+    <div class="footer-links">
+      
+    </div>
+  </div>
+</footer>
+
+
+  <script src="script.js"></script>
+</body>
+
+</html>
